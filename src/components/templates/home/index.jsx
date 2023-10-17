@@ -11,7 +11,7 @@ class Home extends Component {
     posts: [],
     allPosts: [],
     page: 0,
-    postsPerPage: 2,
+    postsPerPage: 10,
     searchValue: "",
   };
 
@@ -60,11 +60,12 @@ class Home extends Component {
     return (
       <section className="container">
         <div className="search-container">
+          {!!searchValue && <h1>Search value: {searchValue}</h1>}
 
-        {!!searchValue && <h1>Search value: {searchValue}</h1>}
-
-        <TextInput searchValue={searchValue} handleChange={this.handleChange} />
-
+          <TextInput
+            searchValue={searchValue}
+            handleChange={this.handleChange}
+          />
         </div>
         {filteredPosts.length > 0 && <Posts posts={filteredPosts} />}
         {filteredPosts.length === 0 && <p>Não existem posts = {searchValue}</p>}
